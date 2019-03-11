@@ -17,16 +17,17 @@ The architecture of the  app is shown below:
 ![Architecture diagram](images/microservices-architecture.png)
 
 The **portfolio** microservice sits at the center of the application. This microservice;
-* persists portfolios using JDBC to a MariaDB database
+* persists trade data  using JDBC to a MariaDB database
 * invokes the **stock-quote** service that invokes an API defined in API Connect in the public IBM Cloud to get stock quotes
 * invokes the Tone Analyzer service in the public IBM Cloud to analyze the tone of submitted feedback
-* sends trades to Kafka so that they can be recorded in Mongo by the **trade-history** microservice
+* sends trades to Kafka so that they can be recorded in Mongo by the **event-consumer** microservice
+* calls the **trade-history** service to get aggregated historical trade  data.
 
 **Tradr** is a Node.js UI for the porfolio service
 
-The **event-consumer** service serves as a Kafka consumer and uses APIs exposed by the **trade-history** service to send received  data to that service.
+The **event-consumer** service serves as a Kafka consumer and stores trade data published by the **portfolio** service in the Mongo database.
 
-The **trade-history** service is called by the **event-consumer** and records trade records sent to Kafka by the **portfolio** service in a Mongo database. This service also exposes an API - [ ] o query the historical data.
+The **trade-history** service exposes an API to query the historical data in Mongo and is  called by the **portfolio** to get aggregated historical data.
 
 The **stock-quote** service queries an external service to get real time stock quotes via an API Connect proxy.
 
@@ -108,7 +109,7 @@ In this part  you'll install the prereqs step by step before installing the Stoc
 ```
    kubectl get pods
 ```
-...The output should show pods for MariaDB and Mongo and they both should be running and in the READT state
+...The output should show pods for MariaDB and Mongo and they both should be running and in the READY state
 
 ```
    NAME                                        READY     STATUS    RESTARTS   AGE
