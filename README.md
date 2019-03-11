@@ -3,7 +3,7 @@
 
 ## Lab - Deploying Microservices
 
-### Deploying and testing the IBM StockTrader sample application in  Kubernetes
+### Deploying and testing the IBM Stock Trader sample application in  Kubernetes
 
 
 ## Overview
