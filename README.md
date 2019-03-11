@@ -14,7 +14,7 @@ The *IBM Stock Trader*  application is a simple stock trading sample, where you 
 
 The architecture of the  app is shown below:
 
-![Architecture diagram](images/microservices-architecture.png
+![Architecture diagram](images/microservices-architecture.png)
 
 The **portfolio** microservice sits at the center of the application. This microservice;
 * persists portfolios using JDBC to a MariaDB database
@@ -161,7 +161,7 @@ tradr-558f6b84b5-82pj8                      1/1       Running   0          1m
 ```
    kubectl get ingress
 ```
-...The output should look something like the following. The value in the  HOSTS column is the hostname part of the URL that you'll use to access the microservices that have an external interface.
+5. Verify the output looks something like the following. The value in the  HOSTS column is the hostname part of the URL that you'll use to access the microservices that have an external interface.
 ```
 NAME                  HOSTS                                               ADDRESS          PORTS     AGE
 stocktrader-ingress   user01-cluster.us-east.containers.appdomain.cloud   169.61.102.110   80        15m
@@ -198,11 +198,7 @@ In this part you'll verify that the various microservices are working as designe
 
 ![Feedback](images/ss5.png)
 
-8. Verify that the data flow of
-```
-   portfolio->Kafka->event-consumer->trade-history-Mongo
-```
-...works by querying the **trade-history*** service via an endpoint  that makes it do a Mongo query.  Add the path ``/trade-history/trades/Client2`` to the Ingress hostname. For example ``http://user49-cluster.us-east.containers.appdomain.cloud/trade-history/trades/Client2`` for an Ingress hostname that starts with ``user49``.
+8. Verify that the data flow of ``portfolio->Kafka->event-consumer->trade-history-Mongo`` works by querying the **trade-history*** service via an endpoint  that makes it do a Mongo query.  Add the path ``/trade-history/trades/Client2`` to the Ingress hostname. For example ``http://user49-cluster.us-east.containers.appdomain.cloud/trade-history/trades/Client2`` for an Ingress hostname that starts with ``user49``.
 
 9. Enter the URL in another browser tab and verify that the history has captured  all the  trades you did while testing. A partial screen shot of what you should get back is shown below:
 
