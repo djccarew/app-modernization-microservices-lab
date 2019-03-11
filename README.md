@@ -14,7 +14,7 @@ The *IBM Stock Trader*  application is a simple stock trading sample, where you 
 
 The architecture of the  app is shown below:
 
-[Architecture diagram](images/microservices-architecture.png
+![Architecture diagram](images/microservices-architecture.png
 
 The **portfolio** microservice sits at the center of the application. This microservice;
 * persists portfolios using JDBC to a MariaDB database
@@ -26,7 +26,7 @@ The **portfolio** microservice sits at the center of the application. This micro
 
 The **event-consumer** service serves as a Kafka consumer and uses APIs exposed by the **trade-history** service to send received  data to that service.
 
-The **trade-history** service is called by the **event-consumer** and records trade records sent to Kafka by the **portfolio** service in a Mong databse. This service also exposes an API o query the historical data.
+The **trade-history** service is called by the **event-consumer** and records trade records sent to Kafka by the **portfolio** service in a Mongo database. This service also exposes an API - [ ] o query the historical data.
 
 The **stock-quote** service queries an external service to get real time stock quotes via an API Connect proxy.
 
@@ -42,7 +42,7 @@ The **stock-quote** service queries an external service to get real time stock q
 
 ###  Step 1: Prepare for installation
 
-Like a typical  Kubernetes app Stock Trader use secrets and ConfigMaps to store information needed by one  or more microservices to access external  services and other microservices. We've  provided that info in a file hosted in Cloud Storage and there is a script that you'll use to retrieve it.
+Like a typical  Kubernetes app, Stock Trader use secrets and ConfigMaps to store information needed by one  or more microservices to access external  services and other microservices. We've  provided that info in a file hosted in Cloud Storage and there is a script that you'll use to retrieve it.
 
 
 1. From a terminal window clone the Github repo that has everything needed to deploy the aggregated Stock Trader app.
@@ -57,7 +57,7 @@ Like a typical  Kubernetes app Stock Trader use secrets and ConfigMaps to store 
    # Note you must be in the scripts sub folder or this command will fail
    cd scripts   
    # Your instructor will provide the URL
-   ./setupLab.sh [URL OF external storage]
+   ./setupLab.sh [URL of external storage]
 ```
 
 3. Verify that the output looks something like the following:
@@ -109,6 +109,7 @@ In this part  you'll install the prereqs step by step before installing the Stoc
    kubectl get pods
 ```
 ...The output should show pods for MariaDB and Mongo and they both should be running and in the READT state
+
 ```
    NAME                                        READY     STATUS    RESTARTS   AGE
    stocktrader-db-mariadb-0                    1/1       Running   0          15m
@@ -125,7 +126,7 @@ stocktrader-db-mariadb               ClusterIP      172.21.251.2    <none>      
 stocktrader-hist-mongodb             ClusterIP      172.21.119.68   <none>                                                    27017/TCP   9m
 stocktrader-pubsub-kafka-dns-proxy   ExternalName   <none>          kafka01-prod02.messagehub.services.us-south.bluemix.net   <none>      8m
 ```
-###  Step 3: Install the StockTrader
+###  Step 3: Install the StockTrader app
 
 In this part  you'll install all the Stock Trader microservices using a Helm chart that has templates for all the microservices. Note that all the  microservices require some of the information stored via secrets in the scripts you ran in the previous section.
 
