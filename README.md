@@ -171,7 +171,7 @@ stocktrader-ingress   user01-cluster.us-east.containers.appdomain.cloud   169.61
 
 In this part you'll verify that the various microservices are working as designed.
 
-1. Bring up the web application using the Ingress hostname you noted at the end of the  previous  section and appending the path ``/tradr`` to it. So for example if your Ingress hostname is ``user49-cluster.us-east.containers.appdomain.cloud`` then the URL will be ``http://user49-cluster.us-east.containers.appdomain.cloud/tradr``
+1. Bring up the web application using the Ingress hostname you noted at the end of the  previous  section and appending the path `/tradr` to it. So for example if your Ingress hostname is `user49-cluster.us-east.containers.appdomain.cloud` then the URL will be `http://user49-cluster.us-east.containers.appdomain.cloud/tradr`
 
 ![Login page](images/ss1.png)
 
@@ -182,7 +182,7 @@ In this part you'll verify that the various microservices are working as designe
 ```
 ![Dashboard](images/ss2.png)
 
-3. Click **Add Client** and name the client ``Client2``. Click **OK**
+3. Click **Add Client** and name the client `Client2`. Click **OK**
 
 ![Dashboard](images/ss3.png)
 
@@ -198,7 +198,7 @@ In this part you'll verify that the various microservices are working as designe
 
 ![Feedback](images/ss5.png)
 
-8. Verify that the data flow of ``portfolio->Kafka->event-consumer->trade-history-Mongo`` works by querying the **trade-history*** service via an endpoint  that makes it do a Mongo query.  Add the path ``/trade-history/trades/Client2`` to the Ingress hostname. For example ``http://user49-cluster.us-east.containers.appdomain.cloud/trade-history/trades/Client2`` for an Ingress hostname that starts with ``user49``.
+8. Verify that the data flow of `portfolio->Kafka->event-consumer->trade-history-Mongo` works by querying the **trade-history*** service via an endpoint  that makes it do a Mongo query.  Add the path `/trade-history/trades/Client2` to the Ingress hostname. For example `http://user49-cluster.us-east.containers.appdomain.cloud/trade-history/trades/Client2` for an Ingress hostname that starts with `user49`.
 
 9. Enter the URL in another browser tab and verify that the history has captured  all the  trades you did while testing. A partial screen shot of what you should get back is shown below:
 
@@ -223,4 +223,4 @@ Free up resources for subsequent labs by deleting the Stock Trader app.
 
 
 ## Summary
-You installed and then tested the  Stock Trader microservoces sample application and got some insight into the challenges of deploying microservices apps in a Kubernetes cluster.
+You installed and then tested the  Stock Trader microservices sample application and got some insight into the challenges of deploying microservices apps in a Kubernetes cluster.
