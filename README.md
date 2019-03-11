@@ -119,7 +119,7 @@ In this part  you'll install the prereqs step by step before installing the Stoc
 ```
    kubectl get svc
 ```
-...The output should show services for Mongo, MariaDB and your DNS proxy to Kafka
+8. Verify that the output shows services for Mongo, MariaDB and your DNS proxy to Kafka
 ```
 NAME                                 TYPE           CLUSTER-IP      EXTERNAL-IP                                               PORT(S)     AGE
 stocktrader-db-mariadb               ClusterIP      172.21.251.2    <none>                                                    3306/TCP    21m
@@ -145,7 +145,7 @@ In this part  you'll install all the Stock Trader microservices using a Helm cha
 ```
   kubectl get pods
 ```
-...Keep running the command  until the output looks something like this:
+4. Keep running the command  until the output looks something like this:
 ```
 NAME                                        READY     STATUS    RESTARTS   AGE
 event-streams-consumer-747cb6b969-xjb6f     1/1       Running   0          1m
@@ -157,11 +157,11 @@ trade-history-6598fd5b7f-pkhvf              1/1       Running   0          1m
 tradr-558f6b84b5-82pj8                      1/1       Running   0          1m
 ```
 
-4. The app uses Ingress to provide access outside of the Kubernetes cluster. Use the following command to get the external hostname you'll need to access Stock Trader.
+5. The app uses Ingress to provide access outside of the Kubernetes cluster. Use the following command to get the external hostname you'll need to access Stock Trader.
 ```
    kubectl get ingress
 ```
-5. Verify the output looks something like the following. The value in the  HOSTS column is the hostname part of the URL that you'll use to access the microservices that have an external interface.
+6. Verify the output looks something like the following. The value in the  HOSTS column is the hostname part of the URL that you'll use to access the microservices that have an external interface.
 ```
 NAME                  HOSTS                                               ADDRESS          PORTS     AGE
 stocktrader-ingress   user01-cluster.us-east.containers.appdomain.cloud   169.61.102.110   80        15m
@@ -207,7 +207,7 @@ In this part you'll verify that the various microservices are working as designe
 
 ## Cleanup
 
-Free up resources for subsequent labs by deleting the Plants by Websphere app.
+Free up resources for subsequent labs by deleting the Stock Trader app.
 
 1. Run the following commands to cleanup (note: you can copy all the commands at once and post then into you command window)
 ```
